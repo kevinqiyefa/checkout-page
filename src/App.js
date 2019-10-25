@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
 
-function App() {
+import './App.scss';
+import PaymentForm from './PaymentForm';
+
+function App({ location }) {
+  const { state, discount } = queryString.parse(location.search);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-title">
+        <h1>hyke</h1>
+      </div>
+
+      <PaymentForm state={state} discount={discount === 'ok'} />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
