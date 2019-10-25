@@ -35,7 +35,7 @@ function PaymentForm({ state, discount }) {
       expDate,
       CVC
     };
-    alert(cardInfo);
+    alert(JSON.stringify(cardInfo, null, 2));
   };
 
   return (
